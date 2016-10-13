@@ -2,7 +2,7 @@
   {
     "id": 1,
     "alias": "Marko Media",
-    "url": "http://www.markcomedia.com",
+    "url": "https://www.markcomedia.com",
     "role": "Web Development Manager",
     "responsibilities": "Hiring, Team Management, PHP Code Base Engineering & Maintenance",
     "from": "January 2007",
@@ -24,7 +24,7 @@
   {
     "id": 3,
     "alias": "theAudience",
-    "url": "http://www.theAudience.com",
+    "url": "https://www.theAudience.com",
     "role": "Web Development Manager",
     "responsibilities": "PHP Coder & Engineer, Team Manager, Test Manager & Scrum Master",
     "from": "March 2011",
@@ -35,7 +35,7 @@
   {
     "id": 4,
     "alias": "theAudience",
-    "url": "http://www.theAudience.com",
+    "url": "https://www.theAudience.com",
     "role": "Technical Product Owner",
     "responsibilities": "Team Management, PHP & JS Code Sign Off, Project Specifications & Budget",
     "from": "March 2013",
@@ -46,7 +46,7 @@
   {
     "id": 5,
     "alias": "theAudience",
-    "url": "http://www.theAudience.com",
+    "url": "https://www.theAudience.com",
     "role": "Director of Technology",
     "responsibilities": "IT Support, Development & Project Advice",
     "from": "August 2013",
@@ -57,7 +57,7 @@
   {
     "id": 6,
     "alias": "BT",
-    "url": "http://productsandservices.com/products",
+    "url": "https://www.productsandservices.bt.com/products",
     "role": "Front End Development Lead",
     "responsibilities": "Scrum Master, Recruitment Manager, Code Quality Manager, Project Manager",
     "from": "July 2014",

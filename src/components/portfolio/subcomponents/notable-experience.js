@@ -7,23 +7,19 @@ export default class NotableXP extends React.Component {
   render() {
     return (
       <ul id="notable-experience" className="row">
-          <li><strong>10 years of commercial web development</strong>
-          experience</li>
+          <li><strong>10 years of commercial web development</strong> experience</li>
           <li>5 years experience managing web development teams (<strong>PDP,
           1:1, L&D, HR</strong>)</li>
           <li>Qualified <strong>Agile and Scrum Certification</strong> and
           Training completed with Mike Cohn</li>
           <li>Delivered BT Mobile using <strong>React JS</strong></li>
-          <li>Delivered an <strong>internal CMS & SPA experiences</strong> (Backstage, Stage) to
-          empower</li>
-          <li>theAudience team and its clients</li>
+          <li>Delivered an <strong>internal CMS & SPA experiences</strong> (Backstage, Stage) to empower theAudience team and its clients</li>
           <li>Advanced understanding of SEO and techniques to improve search
           ranking</li>
           <li>Experienced in newer front end techniques including</li>
           <li><strong>ES6+</strong> &gt; ES5/ES3 transpilation</li>
-          <li>Task runners such as Gulp & Grunt</li>
-          <li>Module bundler <strong>Webpack</strong></li>
-          <li>SASS/LESS compiling and Bootstrap integration</li>
+          <li>Task runners such as Gulp & Grunt & module bundler <strong>Webpack</strong></li>
+          <li><strong>SASS</strong> & LESS compiling, Bootstrap integration</li>
           <li>Enzyme component <strong>unit testing</strong> paired with Mocha & Chai</li>
           <li>Past experience in developing PHP APIs using <strong>mongoDB and MySQL</strong> with
           workBench</li>
@@ -43,6 +39,8 @@ export default class NotableXP extends React.Component {
           deliveries</li>
           <li>Create an internal task force to help BT host JavaScript meet ups
           inside BT (JS Meet up currently hosted)</li>
+          <li>Providing high level estimates for business critical projects</li>
+          <li>Running ceremonies such as <strong>stand-up, retrospectives, sizing</strong></li>
       </ul>
     )
   }
