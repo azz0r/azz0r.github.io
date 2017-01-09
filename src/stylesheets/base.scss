@@ -3,47 +3,6 @@
 @import "breakpoints";
 @import "clearfix";
 
-
-body {
-  margin: 0;
-  padding: 0;
-	font-size: 1.5em;
-}
-h1 {
-	padding: 0;
-	font-size: 3em;
-}
-h2 {
-	font-size: 2em;
-}
-h2,
-h3,
-h4,
-h5 {
-  color: $secondary-color;
-}
-a {
-	color: $tertiary-color;
-}
-ul li {
-	padding-bottom: 5px;
-}
-hr {
-  border: 0;
-  height: 1px;
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
-}
-.sidebar {
-  border-width: 1px;
-  border-style: solid;
-  -webkit-border-image:
-    -webkit-gradient(linear, 0 0, 0 100%, from($secondary-color), to(rgba(0, 0, 0, 0))) 1 100%;
-  -webkit-border-image:
-    -webkit-linear-gradient($secondary-color, rgba(0, 0, 0, 0)) 1 100%;
-  -moz-border-image:
-    -moz-linear-gradient($secondary-color, rgba(0, 0, 0, 0)) 1 100%;
-  -o-border-image:
-    -o-linear-gradient($secondary-color, rgba(0, 0, 0, 0)) 1 100%;
-  border-image:
-    linear-gradient(to bottom, $secondary-color, rgba(0, 0, 0, 0)) 1 100%;
+html {
+  background-color: $primary-bg;
 }
