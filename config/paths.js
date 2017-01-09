@@ -1,35 +1,18 @@
-// TODO: we can split this file into several files (pre-eject, post-eject, test)
-// and use those instead. This way we don't need to branch here.
-
-var path = require('path');
-
-// True after ejecting, false when used as a dependency
-var isEjected = (
-  path.resolve(path.join(__dirname, '..')) ===
-  path.resolve(process.cwd())
-);
-
-// Are we developing create-react-app locally?
-var isInCreateReactAppSource = (
-  process.argv.some(arg => arg.indexOf('--debug-template') > -1)
-);
-
-function resolveOwn(relativePath) {
-  return path.resolve(__dirname, relativePath);
-}
+import path from 'path'
 
 function resolveApp(relativePath) {
-  return path.resolve(relativePath);
+  return path.resolve(relativePath)
 }
 
-// after eject: we're in ./config/
 module.exports = {
   appBuild: resolveApp('build'),
   appHtml: resolveApp('index.html'),
-  appFavicon: resolveApp('favicon.ico'),
   appImgs: resolveApp('src/imgs'),
+  appPublic: resolveApp('src/public'),
+  appSprites: resolveApp('src/imgs/sprites'),
+  appStylesheets: resolveApp('src/stylesheets'),
   appPackageJson: resolveApp('package.json'),
   appSrc: resolveApp('src'),
   appNodeModules: resolveApp('node_modules'),
-  ownNodeModules: resolveApp('node_modules')
-};
+  ownNodeModules: resolveApp('node_modules'),
+}

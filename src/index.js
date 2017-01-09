@@ -1,15 +1,31 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './styles/index.css';
-import App from './components/app/app';
-// import { Provider } from 'react-redux';
-// import configureStore from './store/configure-store';
+import React from "react"
+import { AppContainer } from "react-hot-loader"
+import Root from "./root"
+import FastClick from "fastclick"
+import ReactDOM from "react-dom"
 
-// const store = configureStore();
+const rootEl = document.getElementById("root")
 
-ReactDOM.render(
-  // <Provider store={store}>
-    <App />,
-  // </Provider>,
-  document.getElementById('root')
-);
+export const App = (
+  <AppContainer>
+    <Root />
+  </AppContainer>
+)
+
+try {
+  ReactDOM.render(App, rootEl)
+  FastClick.attach(rootEl)
+  if (module.hot) {
+    module.hot.accept("./root", () => {
+      const NextApp = require("./root").default // eslint-disable-line
+      ReactDOM.render(
+        <AppContainer>
+          <NextApp />
+        </AppContainer>,
+        rootEl
+      )
+    })
+  }
+} catch (err) {
+  console.log("Render error", err)
+}

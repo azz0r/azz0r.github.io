@@ -1,36 +1,54 @@
-AaronLote.Com
-====
+#Universe SIM Manager
 
+[![CircleCI](https://circleci.com/gh/azz0r/wwe-draft-generator.svg?style=svg)](https://circleci.com/gh/azz0r/wwe-draft-generator)
+
+### [View a demo here](https://www.wwesim.com)
 
 ## 📕 Index
- * [Installing](#installing)
- * [Launching](#launching)
- * [Unit Testing](#unit-tests)
+* [Installing](#installing)
+* [Features](#features)
+* [Launching](#launching)
+* [Testing](#testing)
 
-
-## 🖥 <a name="installing">Installing</a>
+### 💪 <a name="installing"> Installing</a>
 ```
 npm cache clean;
 npm install
 npm run start;
 ```
+or
+```
+yarn
+```
 
-## 🚀 <a name="launching">Launching</a>
-* Development stack ```npm run start```
-* Build production stack ```npm run build```
 
-## 💪 <a name="unit-testing">Unit Testing</a>
+### Features
+* PPV, moves, wrestlers, brands, shows, championships collections
+* Create a show
+* Drag and drop wrestlers onto relevant targets (championships, matches, brands)
+* Select who wins a match
+
+### 🚀 <a name="launching">Launching</a>
+* Development ```npm run start```
+* Build  ```npm run build```
+* Test  ```npm run test```
+* Test with Coverage report ```npm run test:coverage```
+
+###  📚 <a name="testing">Testing</a>
 Powered by Mocha, Chai, Enzyme, Sinon.
 
-**Enzyme** is a JavaScript Testing utility for React that makes it easier to assert, manipulate, and traverse your React Components' output.
+* Run unit tests ```npm run test```
 
-**Sinon** is for test spies, stubs and mocks.
+Tests are written by creating .spec files under a __tests__ directory.
 
-**Mocha** is a feature-rich JavaScript test framework running on Node.js and in the browser, making asynchronous testing simple and fun.
-
-**Chai** is a BDD / TDD assertion library
-
-* Run unit tests ```npm run test:unit```
-* Run unit tests with watch, any changes result in a re-run ```npm run test:unit:watch```
-
-Tests are written by creating .spec. files inside the component directory.
+## ✨ <a name="features">Features</a>
+* Hot reloading (v3)
+* Static compile
+* Bundle per route
+* SASS compiling with hot reload
+* Per component SASS
+* Webpack dev & production configs inherit from a common config
+* Mocha, Chai & Enzyme testing
+* Redux
+* React Router 3.0
+* Stage 0, ES6
