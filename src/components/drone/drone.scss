@@ -5,25 +5,23 @@
   background-image: url("./drone.png");
   background-repeat: no-repeat;
   position: absolute;
-  left: 40%;
-  top: 30%;
   z-index: 50;
-  animation: swing 3s linear infinite;
-  animation-duration: 1s;
+  animation-duration: 2s;
   animation-name: float;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
   animation-direction: alternate;
   animation-play-state: running;
   filter: invert(100%);
+  transition: left 0.5s linear, top 0.5s linear;
 }
 
 @keyframes float {
-  0 {
-    transform: translateY(8px) rotate3d(0, 0, 1, 3deg);
+  0% {
+    transform: translateY(1rem) rotate3d(0, 0, 1, -1deg);
   }
 
   100% {
-     transform: translateY(-8px) rotate3d(0, 0, 1, 0deg);
+     transform: translateY(-1rem) rotate3d(0, 0, 1, 1deg);
   }
 }

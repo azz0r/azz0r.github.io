@@ -28,34 +28,33 @@ export default class Drone extends React.Component {
   }
 
   move = (direction, amount) => {
-    const checkValueDoesntVoid = (current, addedValue) => {
+    const verifyNewLocation = (current, addedValue) => {
       let newValue = current + addedValue
       return newValue <= 2 || newValue >= 95 ? current : newValue
     }
     let newState = Object.assign({}, this.state)
 
     if (direction === "left" || direction === "right") {
-      newState.left = checkValueDoesntVoid(this.state.left, amount)
+      newState.left = verifyNewLocation(this.state.left, amount)
     } else {
-      newState.top = checkValueDoesntVoid(this.state.top, amount)
+      newState.top = verifyNewLocation(this.state.top, amount)
     }
 
-    this.setState(
-      {...newState}
-    )
+    this.setState({
+      ...newState
+    })
   }
 
   render() {
-    let style = {
-      left: this.state.left + "%",
-      top: this.state.top + "%",
-    }
     return (
       <div
-        ref="drone"
-        style={style}
+        className="drone"
+        style={{
+          left: this.state.left + "%",
+          top: this.state.top + "%",
+        }}
         onKeyPress={this.onKey}
-        className="drone" />
+      />
     )
   }
 }
