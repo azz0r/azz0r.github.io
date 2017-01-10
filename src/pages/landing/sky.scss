@@ -1,6 +1,5 @@
 .sky {
-  height: 800px;
-  background: #007fd5;
+  height: 75vh;
   position: relative;
   overflow: hidden;
   animation: rollingDay 50s ease-out infinite;
@@ -8,15 +7,12 @@
 
 @keyframes rollingDay {
   0% {
-    background: #007fd5;
-    color: #007fd5
+    background: LightSkyBlue;
   }
   50% {
-    background: #000;
-    color: #a3d9ff
+    background: MidnightBlue;
   }
   100% {
-    background: #007fd5;
-    color: #007fd5
+    background: DeepSkyBlue;
   }
 }
