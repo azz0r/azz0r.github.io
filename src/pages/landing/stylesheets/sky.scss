@@ -3,6 +3,7 @@
   position: relative;
   overflow: hidden;
   animation: rollingDay 50s ease-out infinite;
+  z-index: 10;
 }
 
 @keyframes rollingDay {

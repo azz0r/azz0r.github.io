@@ -1,0 +1,28 @@
+.drone {
+  width: 5rem;
+  height: 5rem;
+  background-size: cover;
+  background-image: url("../drone.png");
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 40%;
+  top: 30%;
+  z-index: 50;
+  animation: swing 3s linear infinite;
+  animation-duration: 1s;
+  animation-name: float;
+  animation-iteration-count: infinite;
+  animation-timing-function:ease-in-out;
+  animation-direction: alternate;
+  animation-play-state: running;
+  filter: invert(100%);
+}
+
+@keyframes float {
+  0 {
+    transform: translateY(8px) rotate3d(0,0,1,3deg);
+  }
+  100% {
+     transform: translateY(-8px) rotate3d(0,0,1,0deg);
+  }
+}

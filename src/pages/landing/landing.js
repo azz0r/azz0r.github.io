@@ -15,6 +15,7 @@ export default class App extends React.Component {
             )}
           </div>
         </div>
+        <div className="drone"></div>
         <div className="floor">
           {Array(totalTrees).fill().map((value, key) =>
             <div className="tree"
