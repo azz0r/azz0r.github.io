@@ -4,6 +4,7 @@ import './landing.scss'
 export default class App extends React.Component {
   render() {
     const totalClouds = 6
+    const totalTrees = 155
     return (
       <section className="scene">
         <div className="sky">
@@ -14,7 +15,12 @@ export default class App extends React.Component {
             )}
           </div>
         </div>
-        <div className="floor"></div>
+        <div className="floor">
+          {Array(totalTrees).fill().map((value, key) =>
+            <div className="tree"
+              key={key} />
+          )}
+        </div>
       </section>
     )
   }

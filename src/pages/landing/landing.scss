@@ -1,9 +1,11 @@
 @import "sky";
 @import "clouds";
 @import "floor";
+@import "tree";
 
 body {
   height: 100vh;
+  overflow: hidden;
 }
 
 .scene {

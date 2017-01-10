@@ -1,0 +1,47 @@
+.tree {
+  position: relative;
+  float: left;
+  background: #4C9E0C;
+  background: radial-gradient(farthest-corner at 90% 20%, #4C9E0C 0%, #4C9E0C 60%, #57b60e 61%, #57b60e 100%);
+  border-radius: 35%;
+  height: 5rem;
+  width: 5rem;
+  box-shadow: 15px 5px rgba(0, 0, 0, 0.1);
+  animation: sway 5s ease-in-out infinite;
+  animation-direction: alternate;
+  transform-origin: bottom;
+  animation-delay: 1s;
+  margin-bottom: 4rem;
+  margin-top: -2rem;
+}
+
+.tree:before {
+  content: "";
+  position: absolute;
+  top: 5rem;
+  left: 20px;
+  background: #B68F58;
+  height: 1.5rem;
+  width: 10px;
+  z-index:-1;
+}
+
+.tree:nth-child(2) {
+  animation-delay: 3s;
+}
+
+.tree:nth-child(3) {
+  animation-delay: 4s;
+}
+
+@keyframes sway  {
+  0%  {
+    transform: skewY(12deg);
+  }
+  60%  {
+    transform: skewY(0deg);
+  }
+  100%  {
+    transform: skewX(12deg);
+  }
+}
