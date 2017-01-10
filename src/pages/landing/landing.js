@@ -1,10 +1,10 @@
 import React from 'react'
-import './landing.scss'
+import './stylesheets/landing.scss'
 
 export default class App extends React.Component {
   render() {
     const totalClouds = 6
-    const totalTrees = 155
+    const totalTrees = 110
     return (
       <section className="scene">
         <div className="sky">

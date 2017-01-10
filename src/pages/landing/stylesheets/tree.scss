@@ -3,7 +3,7 @@
   float: left;
   background: #4C9E0C;
   background: radial-gradient(farthest-corner at 90% 20%, #4C9E0C 0%, #4C9E0C 60%, #57b60e 61%, #57b60e 100%);
-  border-radius: 35%;
+  border-radius: 45%;
   height: 5rem;
   width: 5rem;
   box-shadow: 15px 5px rgba(0, 0, 0, 0.1);
@@ -11,8 +11,7 @@
   animation-direction: alternate;
   transform-origin: bottom;
   animation-delay: 1s;
-  margin-bottom: 4rem;
-  margin-top: -2rem;
+  margin: -2rem 2rem 4rem;
 }
 
 .tree:before {
@@ -20,7 +19,7 @@
   position: absolute;
   top: 5rem;
   left: 20px;
-  background: #B68F58;
+  background: brown;
   height: 1.5rem;
   width: 10px;
   z-index:-1;
@@ -36,12 +35,12 @@
 
 @keyframes sway  {
   0%  {
-    transform: skewY(12deg);
+    transform: skewY(16deg);
   }
   60%  {
     transform: skewY(0deg);
   }
   100%  {
-    transform: skewX(12deg);
+    transform: skewX(7deg);
   }
 }
