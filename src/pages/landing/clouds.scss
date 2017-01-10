@@ -1,0 +1,79 @@
+.clouds {
+  background: transparent;
+  padding: 100px 0;
+  width: 100%;
+
+  .cloud {
+    background: #fff;
+    border-radius: 200px;
+    height: 60px;
+    position: absolute;
+    width: 200px;
+    z-index: 1;
+
+    &:before,
+    &:after {
+      background: #fff;
+      border-radius: 100px;
+      content: "";
+      height: 80px;
+      left: 10px;
+      position: absolute;
+      position: absolute;
+      top: -15px;
+      transform: rotate(30deg);
+      width: 100px;
+    }
+
+    &:after {
+      height: 12rem;
+      left: auto;
+      right: 1.5rem;
+      top: -5.5rem;
+      width: 12rem;
+    }
+
+    &.c1 {
+      animation: rollingClouds 45s linear infinite;
+    }
+
+    &.c2 {
+      animation: rollingClouds 75s linear infinite;
+      opacity: .8;
+      transform: scale(.6);
+    }
+
+    &.c3 {
+      animation: rollingClouds 30s linear infinite;
+      opacity: .6;
+      top: 20rem;
+      transform: scale(.8);
+    }
+
+    &.c4 {
+      animation: rollingClouds 210s linear infinite;
+      opacity: .75;
+      top: 25rem;
+      transform: scale(.75);
+    }
+
+    &.c5 {
+      animation: rollingClouds 77s linear infinite;
+      opacity: .8;
+      top: 15rem;
+      transform: scale(.8);
+    }
+  }
+}
+
+@keyframes rollingClouds {
+  0% {
+     left: -10%;
+   }
+   50% {
+     left: 50%;
+   }
+   100% {
+     left: 100%;
+   }
+}

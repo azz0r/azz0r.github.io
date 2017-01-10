@@ -1,12 +1,10 @@
 import React from "react"
-import Page from "./components/page/page"
 import { IndexRoute, Route } from "react-router"
 
 export default () => {
   return (
     <Route
-      path="/"
-      component={Page}>
+      path="/">
       <IndexRoute
         getComponent={(nextState, callback) => {
           require.ensure([], (require) => {
