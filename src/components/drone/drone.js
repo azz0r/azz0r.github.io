@@ -40,9 +40,9 @@ export default class Drone extends React.Component {
       newState.top = checkValueDoesntVoid(this.state.top, amount)
     }
 
-    this.setState({
+    this.setState(
       {...newState}
-    })
+    )
   }
 
   render() {
