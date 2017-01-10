@@ -3,13 +3,14 @@ import './landing.scss'
 
 export default class App extends React.Component {
   render() {
-    const totalClouds = 5
+    const totalClouds = 6
     return (
       <section className="scene">
         <div className="sky">
           <div className="clouds">
             {Array(totalClouds).fill().map((value, key) =>
-              <div className={`cloud c${key + 1}`} key={key} />
+              <div className="cloud"
+                key={key} />
             )}
           </div>
         </div>
