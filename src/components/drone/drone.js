@@ -28,19 +28,20 @@ export default class Drone extends React.Component {
   }
 
   move = (direction, amount) => {
-    let
-      left = this.state.left,
-      top = this.state.top
+    const checkValueDoesntVoid = (current, addedValue) => {
+      let newValue = current + addedValue
+      return newValue <= 2 || newValue >= 95 ? current : newValue
+    }
+    let newState = Object.assign({}, this.state)
 
     if (direction === "left" || direction === "right") {
-      left = this.state.left + amount
+      newState.left = checkValueDoesntVoid(this.state.left, amount)
     } else {
-      top = this.state.top + amount
+      newState.top = checkValueDoesntVoid(this.state.top, amount)
     }
 
     this.setState({
-      left,
-      top,
+      {...newState}
     })
   }
 
