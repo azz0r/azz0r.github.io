@@ -1,5 +1,10 @@
 import React from 'react'
-import './stylesheets/landing.scss'
+import Sky from "../../components/sky/sky"
+import Clouds from "../../components/clouds/clouds"
+import Drone from "../../components/drone/drone"
+import Floor from "../../components/floor/floor"
+import Trees from "../../components/trees/trees"
+import "./stylesheets/landing"
 
 export default class App extends React.Component {
   render() {
@@ -7,22 +12,14 @@ export default class App extends React.Component {
     const totalTrees = 110
     return (
       <section className="scene">
-        <div className="sky">
+        <Sky>
           <h1>Aaron Lote</h1>
-          <div className="clouds">
-            {Array(totalClouds).fill().map((value, key) =>
-              <div className="cloud"
-                key={key} />
-            )}
-          </div>
-        </div>
-        <div className="drone"></div>
-        <div className="floor">
-          {Array(totalTrees).fill().map((value, key) =>
-            <div className="tree"
-              key={key} />
-          )}
-        </div>
+          <Clouds amount={totalClouds} />
+          <Drone />
+        </Sky>
+        <Floor>
+          <Trees amount={totalTrees} />
+        </Floor>
       </section>
     )
   }
