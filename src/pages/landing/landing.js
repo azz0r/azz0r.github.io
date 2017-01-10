@@ -8,6 +8,7 @@ export default class App extends React.Component {
     return (
       <section className="scene">
         <div className="sky">
+          <h1>Aaron Lote</h1>
           <div className="clouds">
             {Array(totalClouds).fill().map((value, key) =>
               <div className="cloud"

@@ -3,10 +3,16 @@
 @import "floor";
 @import "tree";
 @import "drone";
+@import "headers";
+
+html {
+  font-size: 60%;
+}
 
 body {
   height: 100vh;
   overflow: hidden;
+  font-size: 1.6rem;
 }
 
 .scene {
