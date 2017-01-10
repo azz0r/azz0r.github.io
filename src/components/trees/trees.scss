@@ -2,16 +2,22 @@
   position: relative;
   float: left;
   background: #4C9E0C;
-  background: radial-gradient(farthest-corner at 90% 20%, #4C9E0C 0%, #4C9E0C 60%, #57b60e 61%, #57b60e 100%);
+  background: radial-gradient(
+    farthest-corner at 90% 10%,
+    #4C9E0C 0%,
+    #4C9E0C 50%,
+    #57b60e 51%,
+    #57b60e 100%
+  );
   border-radius: 45%;
   height: 5rem;
   width: 5rem;
   box-shadow: 15px 5px rgba(0, 0, 0, 0.1);
-  animation: sway 5s ease-in-out infinite;
+  animation: sway 3s ease-in-out infinite;
   animation-direction: alternate;
   transform-origin: bottom;
   animation-delay: 1s;
-  margin: -2rem 2rem 4rem;
+  margin: -1.5rem 2rem 4rem;
   z-index: 40;
 }
 
@@ -36,12 +42,12 @@
 
 @keyframes sway  {
   0%  {
-    transform: skewY(16deg);
+    transform: skewY(14deg);
   }
   60%  {
     transform: skewY(0deg);
   }
   100%  {
-    transform: skewX(7deg);
+    transform: skewX(4deg);
   }
 }
