@@ -10,8 +10,8 @@
     #57b60e 100%
   );
   border-radius: 45%;
-  height: 5rem;
-  width: 5rem;
+  height: 7rem;
+  width: 7rem;
   box-shadow: 15px 5px rgba(0, 0, 0, 0.1);
   animation: sway 3s ease-in-out infinite;
   animation-direction: alternate;
@@ -24,12 +24,12 @@
 .tree:before {
   content: "";
   position: absolute;
-  top: 5rem;
-  left: 20px;
+  top: 6rem;
+  left: 3rem;
   background: brown;
-  height: 1.5rem;
-  width: 10px;
-  z-index:-1;
+  height: 2rem;
+  width: 1.5rem;
+  z-index: -1;
 }
 
 .tree:nth-child(2) {
