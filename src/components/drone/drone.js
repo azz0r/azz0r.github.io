@@ -46,15 +46,19 @@ export default class Drone extends React.Component {
         let newState = Object.assign({ type: "%" }, this.state)
         switch (e.keyCode) {
           case 37: // left
+          case 65: //a
             newState.left = keepValueInCenturyRange(this.state.left, -percentToMoveEachClick)
             break
           case 39: // right
+          case 68: //d
             newState.left = keepValueInCenturyRange(this.state.left, percentToMoveEachClick)
             break
           case 38:
+          case 87: //w
             newState.top = keepValueInCenturyRange(this.state.top, -percentToMoveEachClick)
             break
           case 40: // top
+          case 83: //s
             newState.top = keepValueInCenturyRange(this.state.top, percentToMoveEachClick)
             break
         }
