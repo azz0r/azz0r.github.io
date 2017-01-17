@@ -29,6 +29,7 @@ class Scene {
 }
 
 class Line {
+
   constructor(options) {
     this.options = options
   }
@@ -46,6 +47,7 @@ class Line {
 }
 
 class Circle {
+
   constructor(options) {
     this.options = options
     this.context = undefined
@@ -77,14 +79,14 @@ class Circle {
   }
 }
 
-let line = new Line({
-  x1: 20,
-  y1: 30,
-  x2: 100,
-  y2: 20,
-  linewidth: 2,
-  strokestyle: 'red'
-})
+// let line = new Line({
+//   x1: 20,
+//   y1: 30,
+//   x2: 100,
+//   y2: 20,
+//   linewidth: 2,
+//   strokestyle: 'red'
+// })
 
 let circle = new Circle({
   x: 100,
@@ -95,7 +97,6 @@ let circle = new Circle({
 })
 
 let scene = new Scene()
-scene.addObject(line)
 scene.addObject(circle)
 scene.render()
 circle.followToMouse()
