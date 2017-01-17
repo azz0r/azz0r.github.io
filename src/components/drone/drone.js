@@ -28,16 +28,17 @@ export default class Drone extends React.Component {
   state = {
     left: getRandomNumber(50),
     top: getRandomNumber(50),
-    type: "%",
   }
 
   componentDidMount() {
     if (this.props.followMouse) {
       document.onmousemove = (e) => {
+        let
+          xCord = e.clientX,
+          yCord = e.clientY
         this.move({
-          left: e.screenX + 0,
-          top: e.screenY + 0,
-          type: "px",
+          left: xCord / window.innerWidth * 100,
+          top: yCord / window.innerHeight * 100,
         })
       }
     } else {
@@ -74,12 +75,17 @@ export default class Drone extends React.Component {
 
   render() {
     return (
-      <div className={classnames("drone", { invert: this.props.invert })}
+      <div
+        className={
+          classnames(
+            "drone",
+            { invert: this.props.invert }
+          )
+        }
         style={{
-          left: `${this.state.left}${this.state.type}`,
-          top: `${this.state.top}${this.state.type}`,
-        }}
-        onKeyPress={this.onKey}>
+          left: `${this.state.left}%`,
+          top: `${this.state.top}%`,
+        }}>
         <span className="battery" />
       </div>
     )
