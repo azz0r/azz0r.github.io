@@ -13,6 +13,7 @@ module.exports = {
   },
   devServer: {
     contentBase: build,
+    quiet: true,
   },
   module: {
     loaders: [
