@@ -22,27 +22,35 @@ class Scene {
 
   render() {
     this.context.clearRect(0, 0, this.context.canvas.width, this.context.canvas.height)
-    this.objects.forEach( o => {
+    this.objects.forEach(o => {
       o.draw(this.context)
     })
   }
 }
 
-class Line {
+class Drone {
 
   constructor(options) {
     this.options = options
   }
 
-  draw(context) {
-    if (context == null) return false
+  followToMouse() {
+    window.addEventListener('mousemove', (e) => {
+      this.options.x = e.pageX - this.options.radius / 2
+      this.options.y = e.pageY - this.options.radius / 2
+      this.draw(this.context)
+    })
+  }
 
-    context.beginPath()
-    context.lineWidth = this.options.linewidth
-    context.strokeStyle = this.options.strokestyle
-    context.moveTo(this.options.x1, this.options.y1)
-    context.lineTo(this.options.x2, this.options.y2)
-    context.stroke()
+  draw(context) {
+    this.context = context
+    if (this.context == null) return false
+    let img = new Image()
+    img.src = "drone.png"
+
+    img.addEventListener("load", function() {
+      context.drawImage(img, 0, 0)
+    })
   }
 }
 
@@ -79,15 +87,6 @@ class Circle {
   }
 }
 
-// let line = new Line({
-//   x1: 20,
-//   y1: 30,
-//   x2: 100,
-//   y2: 20,
-//   linewidth: 2,
-//   strokestyle: 'red'
-// })
-
 let circle = new Circle({
   x: 100,
   y: 100,
@@ -96,14 +95,18 @@ let circle = new Circle({
   strokeStyle: '#FF4136',
 })
 
+let drone = new Drone({})
+
 let scene = new Scene()
 scene.addObject(circle)
+scene.addObject(drone)
 scene.render()
-circle.followToMouse()
+// circle.followToMouse()
+drone.followToMouse()
 
 animateScenes(scene)
 
-function animateScenes(scenes) {
+function animateScenes() {
   scene.render()
   window.requestAnimationFrame(animateScenes.bind(this, scene))
 }
