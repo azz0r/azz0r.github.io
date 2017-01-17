@@ -1,116 +1,108 @@
-const main = require('./main')
-var canvas = document.getElementById("output")
-var ctx = canvas.getContext("2d")
-var ballRadius = 10
-var x = canvas.width/2
-var y = canvas.height-30
-var dx = 2
-var dy = -2
-var droneHeight = 10
-var droneWidth = 75
-var droneX = (canvas.width-droneWidth)/2
-var rightPressed = false
-var leftPressed = false
-var brickRowCount = 5
-var brickColumnCount = 3
-var brickWidth = 75
-var brickHeight = 20
-var brickPadding = 10
-var brickOffsetTop = 30
-var brickOffsetLeft = 30
-var score = 0
+class Scene {
+  constructor(size = {width: 500, height: 300}, options = {zIndex: 1}) {
+    this.objects = []
 
-document.addEventListener("keydown", keyDownHandler, false)
-document.addEventListener("keyup", keyUpHandler, false)
-document.addEventListener("mousemove", mouseMoveHandler, false)
-document.addEventListener('resize', resizeCanvas, false)
+    this.tickInterval = undefined
+    this.width = size.width
+    this.height = size.height
 
-function keyDownHandler(e) {
-  if(e.keyCode == 39) {
-    rightPressed = true
+    let canvas = document.createElement('canvas')
+    canvas.width = size.width
+    canvas.height = size.height
+    canvas.style.position = 'absolute'
+    canvas.style.backgroundColor = 'black'
+    canvas.style.zIndex = options.zIndex
+    document.body.appendChild(canvas)
+    this.context = canvas.getContext('2d')
   }
-  else if(e.keyCode == 37) {
-    leftPressed = true
+
+  addObject(object) {
+    this.objects.push(object)
   }
-}
-function keyUpHandler(e) {
-  if(e.keyCode == 39) {
-    rightPressed = false
-  }
-  else if(e.keyCode == 37) {
-    leftPressed = false
-  }
-}
-function mouseMoveHandler(e) {
-  var relativeX = e.clientX - canvas.offsetLeft
-  if(relativeX > 0 && relativeX < canvas.width) {
-    droneX = relativeX - droneWidth/2
+
+  render() {
+    this.context.clearRect(0, 0, this.context.canvas.width, this.context.canvas.height)
+    this.objects.forEach( o => {
+      o.draw(this.context)
+    })
   }
 }
 
-function resizeCanvas() {
-  ctx.width = window.innerWidth
-  ctx.height = window.innerHeight
-  draw()
+class Line {
+  constructor(options) {
+    this.options = options
+  }
+
+  draw(context) {
+    if (context == null) return false
+
+    context.beginPath()
+    context.lineWidth = this.options.linewidth
+    context.strokeStyle = this.options.strokestyle
+    context.moveTo(this.options.x1, this.options.y1)
+    context.lineTo(this.options.x2, this.options.y2)
+    context.stroke()
+  }
 }
 
-function collisionDetection() {
+class Circle {
+  constructor(options) {
+    this.options = options
+    this.context = undefined
+  }
+
+  followToMouse() {
+    window.addEventListener('mousemove', (e) => {
+      this.options.x = e.pageX - this.options.radius / 2
+      this.options.y = e.pageY - this.options.radius / 2
+      this.draw(this.context)
+    })
+  }
+
+  draw(context) {
+    this.context = context
+    if (this.context == null) return false
+
+    this.context.beginPath()
+    this.context.arc(
+      this.options.x,
+      this.options.y,
+      this.options.radius,
+      0,
+      2*Math.PI,
+      false,
+    )
+    this.context.fill()
+    this.context.stroke()
+  }
 }
 
-function drawBall() {
-  ctx.beginPath()
-  ctx.arc(x, y, ballRadius, 0, Math.PI*2)
-  ctx.fillStyle = "#0095DD"
-  ctx.fill()
-  ctx.closePath()
-}
+let line = new Line({
+  x1: 20,
+  y1: 30,
+  x2: 100,
+  y2: 20,
+  linewidth: 2,
+  strokestyle: 'red'
+})
 
-function drawDrone() {
-  ctx.beginPath()
-  ctx.rect(droneX, canvas.height-droneHeight, droneWidth, droneHeight)
-  ctx.fillStyle = "#0095DD"
-  ctx.fill()
-  ctx.closePath()
-}
+let circle = new Circle({
+  x: 100,
+  y: 100,
+  radius: 50,
+  lineWidth : 1,
+  strokeStyle: '#FF4136',
+})
 
-function drawScore() {
-  ctx.font = "16px Arial"
-  ctx.fillStyle = "#0095DD"
-  ctx.fillText("Score: "+score, 8, 20)
-}
-function draw() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height)
-  drawBall()
-  drawDrone()
-  drawScore()
-  collisionDetection()
-  if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
-    dx = -dx
-  }
-  if(y + dy < ballRadius) {
-    dy = -dy
-  }
-  else if(y + dy > canvas.height-ballRadius) {
-    if(x > droneX && x < droneX + droneWidth) {
-      dy = -dy
-    }
-    else {
+let scene = new Scene()
+scene.addObject(line)
+scene.addObject(circle)
+scene.render()
+circle.followToMouse()
 
-        x = canvas.width/2
-        y = canvas.height-30
-        dx = 3
-        dy = -3
-        droneX = (canvas.width- droneWidth)/2
-      }
-  }
-  if(rightPressed && droneX < canvas.width-droneWidth) {
-    droneX += 7
-  }
-  else if(leftPressed && droneX > 0) {
-    droneX -= 7
-  }
-  x += dx
-  y += dy
-  requestAnimationFrame(draw)
+animateScenes(scene)
+
+function animateScenes(scenes) {
+  scene.render()
+  window.requestAnimationFrame(animateScenes.bind(this, scene))
 }
-draw()
