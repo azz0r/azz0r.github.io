@@ -25,8 +25,8 @@ export default class Drone extends React.Component {
   }
 
   state = {
-    left: getRandomNumber(),
-    top: getRandomNumber(),
+    left: getRandomNumber(50),
+    top: getRandomNumber(50),
     type: "%",
   }
 
