@@ -10,7 +10,7 @@ class Scene {
     canvas.width = size.width
     canvas.height = size.height
     canvas.style.position = 'absolute'
-    canvas.style.backgroundColor = 'black'
+    canvas.style.backgroundColor = 'white'
     canvas.style.zIndex = options.zIndex
     document.body.appendChild(canvas)
     this.context = canvas.getContext('2d')
@@ -90,7 +90,7 @@ let circle = new Circle({
   x: 100,
   y: 100,
   radius: 50,
-  lineWidth : 1,
+  lineWidth: 1,
   strokeStyle: '#FF4136',
 })
 
