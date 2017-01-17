@@ -32,7 +32,7 @@ export default class Drone extends React.Component {
   }
 
   componentDidMount() {
-    if (this.state.followMouse) {
+    if (this.props.followMouse) {
       document.onmousemove = (e) => {
         this.move({
           left: e.screenX + 0,

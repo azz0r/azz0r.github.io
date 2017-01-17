@@ -16,10 +16,10 @@ export default class App extends React.Component {
           <h1>Aaron Lote</h1>
           <Clouds amount={totalClouds} />
           <Drone followMouse={true}
-            invert={false} />
-          <Drone followMouse={false}
             invert={true}
           />
+          <Drone followMouse={false}
+            invert={false} />
         </Sky>
         <Floor>
           <Trees amount={totalTrees} />
