@@ -1,8 +1,5 @@
-build
-node_modules
-.sass-cache
 .DS_Store
+.idea
+node_modules
 npm-debug.log
-typings
-jsconfig.json
-coverage
+build
