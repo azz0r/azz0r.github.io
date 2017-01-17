@@ -15,7 +15,11 @@ export default class App extends React.Component {
         <Sky>
           <h1>Aaron Lote</h1>
           <Clouds amount={totalClouds} />
-          <Drone />
+          <Drone followMouse={true}
+            invert={false} />
+          <Drone followMouse={false}
+            invert={true}
+          />
         </Sky>
         <Floor>
           <Trees amount={totalTrees} />
