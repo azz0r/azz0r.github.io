@@ -1,11 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <title>Game Demo</title>
+  <meta charset="utf-8" />
+  <title>Game Demo</title>
+  <style>
+    html, body {
+      margin: 0px;
+      border: 0;
+      overflow: hidden;
+      display: block;
+      background-color: black;
+    }
+    #output {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+    }
+  </style>
 </head>
 <body>
-  <div id="output"></div>
+  <canvas width="480" height="320" id="output"></canvas>
   <script src="bundle.js"></script>
 </body>
 </html>
