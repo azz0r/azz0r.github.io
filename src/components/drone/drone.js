@@ -1,60 +1,91 @@
 import React from "react"
+import classnames from "classnames"
 import "./drone.scss"
+
+const keepValueInCenturyRange = (prev, diff) => {
+  const next = prev + diff
+  return next < 1 || next > 99 ? prev : next
+}
+const getRandomNumber = (max = 100) => {
+  return Math.floor(Math.random() * max) + 1
+}
 
 export default class Drone extends React.Component {
 
+  displayName = "Drone"
+
+  static propTypes = {
+    followMouse: React.PropTypes.bool,
+    invertColor: React.PropTypes.bool,
+  }
+
+  static defaultProps = {
+    followMouse: true,
+    invertColor: false,
+  }
+
   state = {
-    left: 50,
-    top: 50,
+    left: getRandomNumber(),
+    top: getRandomNumber(),
+    type: "%",
   }
 
   componentDidMount() {
-    document.onkeydown = (e) => {
-      switch (e.keyCode) {
-        case 37: // left
-          this.move("left", -3)
-          break
-        case 39: // right
-          this.move("left", 3)
-          break
-        case 38: // top
-          this.move("top", -3)
-          break
-        case 40: // top
-          this.move("top", 3)
-          break
+    console.log(this.state)
+    if (this.state.followMouse) {
+      console.log("we got here")
+      document.onmousemove = (e) => {
+        this.move({
+          left: e.screenX + 0,
+          top: e.screenY + 0,
+          type: "px",
+        })
+      }
+    } else {
+      document.onkeydown = (e) => {
+        let changed,
+          newState = Object.assign({ type: "%" }, this.state)
+        switch (e.keyCode) {
+          case 37: // left
+            newState.left = keepValueInCenturyRange(this.state.left, -3)
+            break
+          case 39: // right
+            newState.left = keepValueInCenturyRange(this.state.left, 3)
+            break
+          case 38:
+            newState.top = keepValueInCenturyRange(this.state.top, -3)
+            break
+          case 40: // top
+            newState.top = keepValueInCenturyRange(this.state.top, 3)
+            break
+        }
+        this.move({
+          ...newState
+        })
       }
     }
   }
 
-  move = (direction, amount) => {
-    const verifyNewLocation = (current, addedValue) => {
-      let newValue = current + addedValue
-      return newValue <= 2 || newValue >= 95 ? current : newValue
-    }
-    let newState = Object.assign({}, this.state)
-
-    if (direction === "left" || direction === "right") {
-      newState.left = verifyNewLocation(this.state.left, amount)
-    } else {
-      newState.top = verifyNewLocation(this.state.top, amount)
-    }
-
+  move = ({ left = 0, top = 0, type = "%" }) => {
+    console.log(left, top, type)
     this.setState({
-      ...newState
+      left,
+      top,
+      type,
     })
   }
 
   render() {
+    console.log(this.state.left, this.state.top)
     return (
-      <div
-        className="drone"
+      <div className={classnames("drone", { invert: this.props.invert })}
         style={{
-          left: this.state.left + "%",
-          top: this.state.top + "%",
+          left: `${this.state.left}${this.state.type}`,
+          top: `${this.state.top}${this.state.type}`,
         }}
         onKeyPress={this.onKey}>
         <span className="battery" />
+        {this.state.left} x {this.state.top}
       </div>
     )
   }
