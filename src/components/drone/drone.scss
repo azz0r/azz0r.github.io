@@ -6,7 +6,10 @@
   background-repeat: no-repeat;
   position: absolute;
   z-index: 50;
-  filter: invert(100%);
+  
+  &.invert {
+    filter: invert(100%);
+  }
 
   &, &.battery {
     animation-duration: 2s;
