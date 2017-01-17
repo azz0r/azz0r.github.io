@@ -65,7 +65,6 @@ export default class Drone extends React.Component {
   }
 
   move = ({ left = 0, top = 0, type = "%" }) => {
-    console.log(left, top, type)
     this.setState({
       left,
       top,
@@ -74,7 +73,6 @@ export default class Drone extends React.Component {
   }
 
   render() {
-    console.log(this.state.left, this.state.top)
     return (
       <div className={classnames("drone", { invert: this.props.invert })}
         style={{
