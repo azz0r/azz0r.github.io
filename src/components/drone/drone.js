@@ -2,11 +2,12 @@ import React from "react"
 import classnames from "classnames"
 import "./drone.scss"
 
-const keepValueInCenturyRange = (prev, diff) => {
+const percentToMoveEachClick = 5
+function keepValueInCenturyRange(prev, diff) {
   const next = prev + diff
   return next < 1 || next > 99 ? prev : next
 }
-const getRandomNumber = (max = 100) => {
+function getRandomNumber(max = 100) {
   return Math.floor(Math.random() * max) + 1
 }
 
@@ -41,20 +42,19 @@ export default class Drone extends React.Component {
       }
     } else {
       document.onkeydown = (e) => {
-        let changed,
-          newState = Object.assign({ type: "%" }, this.state)
+        let newState = Object.assign({ type: "%" }, this.state)
         switch (e.keyCode) {
           case 37: // left
-            newState.left = keepValueInCenturyRange(this.state.left, -3)
+            newState.left = keepValueInCenturyRange(this.state.left, -percentToMoveEachClick)
             break
           case 39: // right
-            newState.left = keepValueInCenturyRange(this.state.left, 3)
+            newState.left = keepValueInCenturyRange(this.state.left, percentToMoveEachClick)
             break
           case 38:
-            newState.top = keepValueInCenturyRange(this.state.top, -3)
+            newState.top = keepValueInCenturyRange(this.state.top, -percentToMoveEachClick)
             break
           case 40: // top
-            newState.top = keepValueInCenturyRange(this.state.top, 3)
+            newState.top = keepValueInCenturyRange(this.state.top, percentToMoveEachClick)
             break
         }
         this.move({
