@@ -85,7 +85,6 @@ export default class Drone extends React.Component {
         }}
         onKeyPress={this.onKey}>
         <span className="battery" />
-        {this.state.left} x {this.state.top}
       </div>
     )
   }
