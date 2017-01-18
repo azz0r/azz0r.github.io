@@ -36,8 +36,9 @@ class Drone {
 
   followToMouse() {
     window.addEventListener('mousemove', (e) => {
-      this.options.x = e.pageX - this.options.radius / 2
-      this.options.y = e.pageY - this.options.radius / 2
+      console.log(e)
+      this.options.x = e.cliientY
+      this.options.y = e.clientX
       this.draw(this.context)
     })
   }
@@ -48,9 +49,9 @@ class Drone {
     let img = new Image()
     img.src = "drone.png"
 
-    img.addEventListener("load", function() {
-      context.drawImage(img, 0, 0)
-    })
+    if (img.complete) {
+      this.context.drawImage(img, this.options.y, this.options.x)
+    }
   }
 }
 
@@ -95,7 +96,10 @@ let circle = new Circle({
   strokeStyle: '#FF4136',
 })
 
-let drone = new Drone({})
+let drone = new Drone({
+  x: 100,
+  y: 100,
+})
 
 let scene = new Scene()
 scene.addObject(circle)
