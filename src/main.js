@@ -1,7 +1,8 @@
 import Drone from "./drone"
 import Rectangle from "./rectangle"
 
-class Scene {
+class Container {
+
   constructor(size = { width: 1024, height: 800 }, options = { zIndex: 1 }) {
     this.objects = []
 
@@ -50,16 +51,21 @@ let floor = new Rectangle({
   height: 300,
 })
 
-let scene = new Scene()
-scene.addObject(floor)
-scene.addObject(drone)
-scene.addObject(secondaryDrone)
-scene.render()
+let appInstance = new Container()
+appInstance.addObject(floor)
+appInstance.addObject(drone)
+appInstance.addObject(secondaryDrone)
+appInstance.render()
 drone.followToMouse()
 
-animateScenes(scene)
+animateScenes(appInstance)
 
 function animateScenes() {
-  scene.render()
-  window.requestAnimationFrame(animateScenes.bind(this, scene))
+  appInstance.render()
+  window.requestAnimationFrame(
+    animateScenes.bind(
+      this,
+      appInstance,
+    )
+  )
 }
