@@ -37,8 +37,8 @@ class Drone {
   followToMouse() {
     window.addEventListener('mousemove', (e) => {
       console.log(e)
-      this.options.x = e.cliientY
-      this.options.y = e.clientX
+      this.options.x = e.screenX
+      this.options.y = e.screenY
       this.draw(this.context)
     })
   }
@@ -50,7 +50,7 @@ class Drone {
     img.src = "drone.png"
 
     if (img.complete) {
-      this.context.drawImage(img, this.options.y, this.options.x)
+      this.context.drawImage(img, this.options.x, this.options.y)
     }
   }
 }
