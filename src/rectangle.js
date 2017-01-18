@@ -1,14 +1,18 @@
+const defaults = {
+  name: "Circle",
+}
+
 export default class Rectangle {
 
-  constructor(options) {
-    this.options = options
+  constructor(props) {
+    this.props = Object.assign(defaults, props)
     this.context = undefined
   }
 
   followToMouse() {
     window.addEventListener('mousemove', (e) => {
-      this.options.x = e.pageX - this.options.radius / 2
-      this.options.y = e.pageY - this.options.radius / 2
+      this.props.x = e.pageX - this.props.radius / 2
+      this.props.y = e.pageY - this.props.radius / 2
       this.draw(this.context)
     })
   }
@@ -19,13 +23,13 @@ export default class Rectangle {
 
     this.context.beginPath()
     this.context.fillRect(
-      this.options.x,
-      this.options.y,
-      this.options.width,
-      this.options.height,
+      this.props.x,
+      this.props.y,
+      this.props.width,
+      this.props.height,
     )
 
-    this.context.fillStyle = this.options.fillStyle
+    this.context.fillStyle = this.props.fillStyle
     this.context.fill()
     this.context.stroke()
   }

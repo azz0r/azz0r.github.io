@@ -1,6 +1,5 @@
 import Drone from "./drone"
 import Rectangle from "./rectangle"
-import Circle from "./circle"
 
 class Scene {
   constructor(size = { width: 1024, height: 800 }, options = { zIndex: 1 }) {
@@ -14,7 +13,7 @@ class Scene {
     canvas.width = size.width
     canvas.height = size.height
     canvas.style.position = "absolute"
-    canvas.style.backgroundColor = "white"
+    canvas.style.backgroundColor = "LightSkyBlue"
     canvas.style.zIndex = options.zIndex
     document.body.appendChild(canvas)
     this.context = canvas.getContext("2d")
@@ -43,25 +42,16 @@ let secondaryDrone = new Drone({
   followToMouse: false,
 })
 
-let sky = new Rectangle({
-  x: 0,
-  y: 500,
-  fillStyle: "LightSkyBlue",
-  width: 1024,
-  height: 500,
-})
-
 let floor = new Rectangle({
   x: 0,
-  y: 0,
+  y: 500,
   fillStyle: "#B3E061",
   width: 1024,
-  height: 500,
+  height: 300,
 })
 
 let scene = new Scene()
 scene.addObject(floor)
-scene.addObject(sky)
 scene.addObject(drone)
 scene.addObject(secondaryDrone)
 scene.render()

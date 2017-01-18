@@ -1,13 +1,17 @@
+const defaults = {
+  name: "Drone",
+}
+
 export default class Drone {
 
-  constructor(options) {
-    this.options = options
+  constructor(props) {
+    this.props = Object.assign(defaults, props)
   }
 
   followToMouse() {
     window.addEventListener('mousemove', (e) => {
-      this.options.x = e.screenX
-      this.options.y = e.screenY
+      this.props.x = e.screenX
+      this.props.y = e.screenY
       this.draw(this.context)
     })
   }
@@ -19,10 +23,13 @@ export default class Drone {
     img.src = "drone.png"
 
     if (img.complete) {
+      if (this.props.invert) {
+        this.context.globalCompositeOperation='difference'
+      }
       this.context.drawImage(
         img,
-        this.options.x,
-        this.options.y,
+        this.props.x,
+        this.props.y,
       )
     }
   }
