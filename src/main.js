@@ -1,19 +1,23 @@
+import Drone from "./drone"
+import Rectangle from "./rectangle"
+import Circle from "./circle"
+
 class Scene {
-  constructor(size = {width: 500, height: 300}, options = {zIndex: 1}) {
+  constructor(size = { width: 1024, height: 800 }, options = { zIndex: 1 }) {
     this.objects = []
 
     this.tickInterval = undefined
     this.width = size.width
     this.height = size.height
 
-    let canvas = document.createElement('canvas')
+    let canvas = document.createElement("canvas")
     canvas.width = size.width
     canvas.height = size.height
-    canvas.style.position = 'absolute'
-    canvas.style.backgroundColor = 'white'
+    canvas.style.position = "absolute"
+    canvas.style.backgroundColor = "white"
     canvas.style.zIndex = options.zIndex
     document.body.appendChild(canvas)
-    this.context = canvas.getContext('2d')
+    this.context = canvas.getContext("2d")
   }
 
   addObject(object) {
@@ -28,84 +32,40 @@ class Scene {
   }
 }
 
-class Drone {
-
-  constructor(options) {
-    this.options = options
-  }
-
-  followToMouse() {
-    window.addEventListener('mousemove', (e) => {
-      console.log(e)
-      this.options.x = e.screenX
-      this.options.y = e.screenY
-      this.draw(this.context)
-    })
-  }
-
-  draw(context) {
-    this.context = context
-    if (this.context == null) return false
-    let img = new Image()
-    img.src = "drone.png"
-
-    if (img.complete) {
-      this.context.drawImage(img, this.options.x, this.options.y)
-    }
-  }
-}
-
-class Circle {
-
-  constructor(options) {
-    this.options = options
-    this.context = undefined
-  }
-
-  followToMouse() {
-    window.addEventListener('mousemove', (e) => {
-      this.options.x = e.pageX - this.options.radius / 2
-      this.options.y = e.pageY - this.options.radius / 2
-      this.draw(this.context)
-    })
-  }
-
-  draw(context) {
-    this.context = context
-    if (this.context == null) return false
-
-    this.context.beginPath()
-    this.context.arc(
-      this.options.x,
-      this.options.y,
-      this.options.radius,
-      0,
-      2*Math.PI,
-      false,
-    )
-    this.context.fill()
-    this.context.stroke()
-  }
-}
-
-let circle = new Circle({
-  x: 100,
-  y: 100,
-  radius: 50,
-  lineWidth: 1,
-  strokeStyle: '#FF4136',
-})
-
 let drone = new Drone({
   x: 100,
   y: 100,
 })
 
+let secondaryDrone = new Drone({
+  x: 350,
+  y: 200,
+  followToMouse: false,
+  scale: 0.3,
+})
+
+let sky = new Rectangle({
+  x: 0,
+  y: 500,
+  fillStyle: "LightSkyBlue",
+  width: 1024,
+  height: 500,
+})
+
+let floor = new Rectangle({
+  x: 0,
+  y: 0,
+  fillStyle: "#B3E061",
+  width: 1024,
+  height: 500,
+})
+
 let scene = new Scene()
-scene.addObject(circle)
+scene.addObject(floor)
+scene.addObject(sky)
 scene.addObject(drone)
+scene.addObject(secondaryDrone)
 scene.render()
-// circle.followToMouse()
 drone.followToMouse()
 
 animateScenes(scene)
