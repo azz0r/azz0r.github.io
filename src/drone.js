@@ -23,8 +23,6 @@ export default class Drone {
         img,
         this.options.x,
         this.options.y,
-        img.width * this.options.scale,
-        img.height * this.options.scale,
       )
     }
   }

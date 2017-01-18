@@ -41,7 +41,6 @@ let secondaryDrone = new Drone({
   x: 350,
   y: 200,
   followToMouse: false,
-  scale: 0.3,
 })
 
 let sky = new Rectangle({
