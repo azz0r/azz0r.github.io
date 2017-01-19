@@ -1,5 +1,5 @@
-import Drone from "./drone"
-import Rectangle from "./rectangle"
+import { Drone } from "./drone"
+import { Rectangle }  from "./rectangle"
 
 class Container {
 
@@ -11,6 +11,7 @@ class Container {
     this.height = size.height
 
     let canvas = document.createElement("canvas")
+    canvas.tabIndex = 1000;
     canvas.width = size.width
     canvas.height = size.height
     canvas.style.position = "absolute"
@@ -32,12 +33,12 @@ class Container {
   }
 }
 
-let drone = new Drone({
+let mouseDrone = new Drone({
   x: 100,
   y: 100,
 })
 
-let secondaryDrone = new Drone({
+let kbDrone = new Drone({
   x: 350,
   y: 200,
   followToMouse: false,
@@ -53,10 +54,11 @@ let floor = new Rectangle({
 
 let appInstance = new Container()
 appInstance.addObject(floor)
-appInstance.addObject(drone)
-appInstance.addObject(secondaryDrone)
+appInstance.addObject(kbDrone)
+appInstance.addObject(mouseDrone)
 appInstance.render()
-drone.followToMouse()
+kbDrone.followKeyboard()
+mouseDrone.followToMouse()
 
 animateScenes(appInstance)
 

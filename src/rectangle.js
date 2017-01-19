@@ -1,11 +1,7 @@
-const defaults = {
-  name: "Circle",
-}
-
-export default class Rectangle {
+export class Rectangle {
 
   constructor(props) {
-    this.props = Object.assign(defaults, props)
+    this.props = props
     this.context = undefined
   }
 
@@ -18,8 +14,8 @@ export default class Rectangle {
   }
 
   draw(context) {
+    if (context == null) return false
     this.context = context
-    if (this.context == null) return false
 
     this.context.beginPath()
     this.context.fillRect(
