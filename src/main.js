@@ -17,7 +17,7 @@ class App extends React.Component {
   componentDidMount() {
     const url = `${settings.apiUrl}?appId=${settings.appId}&q=${this.state.q}&mode=${this.state.mode}`
     fetch(url, {
-      method: 'GET'
+      method: "GET",
     })
     .then(response => response.json())
     .then((results) => {
@@ -30,16 +30,17 @@ class App extends React.Component {
   }
 
   render() {
-    console.log("state", (this.state.results))
     return (
       <div>
-        {this.state.results.map((result) => {
-          return (
-            <div style={{backgroundColor: "red"}}>
-              {result.weather}
-            </div>
-          )
-        })}
+        <If condition={this.state.results.list}>
+          {this.state.results.list.map((result, key) => {
+            return (
+              <div key={key} style={{backgroundColor: "red"}}>
+                {result.dt_txt}
+              </div>
+            )
+          })}
+        </If>
       </div>
     )
   }
