@@ -31,11 +31,11 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="weather">
         <If condition={this.state.results.list}>
           {this.state.results.list.map((result, key) => {
             return (
-              <div key={key} style={{backgroundColor: "red"}}>
+              <div key={key} className="day">
                 {result.dt_txt}
               </div>
             )
