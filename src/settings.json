@@ -1,5 +1,14 @@
 {
   "defaultLocation": "London, GB",
   "appId": "c7074b48826a3e1f5def36267b52c7bb",
-  "apiUrl": "http://api.openweathermap.org/data/2.5/forecast"
+  "apiUrl": "http://api.openweathermap.org/data/2.5/forecast",
+  "defaultDateSettings": {
+    "month": "short",
+    "day": "numeric",
+    "weekday": "short"
+  },
+  "defaultTimeSettings": {
+    "hour": "2-digit",
+    "minute": "2-digit"
+  }
 }

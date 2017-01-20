@@ -57,6 +57,8 @@ class App extends React.Component {
               <Day key={dateKey}
                 date={new Date(dateKey)}
                 times={this.state.days[dateKey]}
+                timeSettings={Settings.defaultTimeSettings}
+                dateSettings={Settings.defaultDateSettings}
               />
             )}
           </div>
