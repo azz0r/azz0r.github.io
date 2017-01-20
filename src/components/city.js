@@ -2,12 +2,13 @@
 import React from "react"
 
 export const City = ({
-  name,
-  country,
+  name = "",
+  country = "",
 }) => {
   return (
     <h1>
-      {name}, {country}
+      <span className="city__name">{name}, </span>
+      <span className="city">{country}</span>
     </h1>
   )
 }

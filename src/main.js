@@ -12,7 +12,7 @@ const settings = {
 class App extends React.Component {
 
   state = {
-    q: "London, UK",
+    q: "India",
     mode: "json",
     city: "",
     list: [],

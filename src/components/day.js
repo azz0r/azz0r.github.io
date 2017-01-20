@@ -14,19 +14,30 @@ export const Day = ({
   const todayClass = isToday ? "active" : "inactive"
   return (
     <div className={`day ${todayClass}`}>
-      <h3>{date.toLocaleDateString()}</h3>
-      <ul className="times">
+      <h3>
+        {date.toLocaleDateString()}
+      </h3>
+      <section className="times">
         {times.map((time, key) =>
-          <li className="time ss-style-triangles" key={key}>
-            <span className="time__time">{new Date(time.dt_txt).toLocaleTimeString([], timeSettings)}</span>
-            <span className="time__main">{time.weather[0].main}</span>
-            <span className="time__description">{time.weather[0].description}</span>
+          <div className="time" key={key}>
+            <span className="time__time">
+              {new Date(time.dt_txt).toLocaleTimeString([], timeSettings)}
+            </span>
+            <span className="time__main">
+              {time.weather[0].main}
+              <If condition={time.weather[0].main === "Clouds"}>
+                &nbsp;<span className="icon fa fa-cloud"></span>
+              </If>
+            </span>
+            <span className="time__description">
+              {time.weather[0].description}
+            </span>
             <div>
               <hr className="separator" />
             </div>
-          </li>
+          </div>
         )}
-      </ul>
+      </section>
     </div>
   )
 }
