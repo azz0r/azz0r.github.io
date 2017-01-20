@@ -11,7 +11,9 @@ class App extends React.Component {
   state = {
     q: "London, UK",
     mode: "json",
-    results: [],
+    city: "",
+    list: "",
+    loading: true,
   }
 
   componentDidMount() {
@@ -21,8 +23,16 @@ class App extends React.Component {
     })
     .then(response => response.json())
     .then((results) => {
+      results.list = results.list.reduce((prev, current) => {
+        let date = current.dt_txt.split(" ")[0]
+        if (!prev[date]) prev[date] = []
+        prev[date].push(current)
+        return prev
+      }, [])
       this.setState({
-        results,
+        city: results.city,
+        list: results.list,
+        loading: false,
       })
     }).catch((error) => {
       console.log(error)
@@ -30,16 +40,25 @@ class App extends React.Component {
   }
 
   render() {
+    const City = ({ name, country }) => {
+      return (
+        <h1>
+          {name}, {country}
+        </h1>
+      )
+    }
     return (
-      <div className="weather">
-        <If condition={this.state.results.list}>
-          {this.state.results.list.map((result, key) => {
+      <div className={`weather ${(this.state.loading) ? "loading" : "inactive"}`}>
+        <If condition={this.state.city.name}>
+          <City name={this.state.city.name} country={this.state.city.country} />
+          {this.state.list.map((result, key) => {
+            console.log("hi")
             return (
-              <div key={key} className="day">
-                {result.dt_txt}
+              <div>
+                <h2>{key}</h2>
+                <p>{result.length}</p>
               </div>
-            )
-          })}
+            )})}
         </If>
       </div>
     )
