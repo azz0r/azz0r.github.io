@@ -9,7 +9,7 @@ import settings from "./settings"
 class App extends React.Component {
 
   state = {
-    q: "India",
+    q: settings.defaultLocation,
     mode: "json",
     city: "",
     list: [],
