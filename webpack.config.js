@@ -22,6 +22,14 @@ module.exports = {
         loader: "babel-loader",
         include: src,
       },
+      {
+        test: /\.scss$/,
+        loaders: [
+          "style-loader",
+          "css-loader",
+          "sass-loader",
+        ],
+      },
     ],
   },
   plugins: [
@@ -36,4 +44,9 @@ module.exports = {
     colors: true,
   },
   devtool: "source-map",
+  sassLoader: {
+    includePaths: [
+      src,
+    ],
+  },
 }
