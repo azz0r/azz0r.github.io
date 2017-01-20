@@ -1,24 +1,103 @@
-html, body {
-  margin: 0px;
+body {
+  font-family: "Roboto Slab", "Verdana", sans-serif;
+  animation: rollingDay 50s ease-out infinite;
+  height: 100%;
+  margin: 0;
   border: 0;
-  overflow: hidden;
+}
+
+h1 {
+  padding: 2rem 0 0rem 2rem;
+}
+
+ul {
+  padding: 0;
+}
+
+ul li {
+  list-style: none;
+}
+
+/* react requires a parent div so we have to set that
+   and the main element to 100% for flex justify content to work */
+html,
+body,
+#container,
+#container > div,
+.weather {
+  height: 100%;
+}
+
+.days {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  align-items: baseline;
+  padding: 0 1rem;
+}
+
+.days .day {
+  background-color: #fff;
+  margin: 0 1rem;
+  opacity: .7;
+  text-align: center;
+  transition: opacity 1s ease-in;
+  width: 100%;
+}
+
+.day h3 {
+  font-size: 2.2rem;
+}
+
+.days .day:hover {
+  opacity: 1;
+  transition: opacity 1s ease-out;
+}
+
+.day {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  position: relative;
+}
+
+.time {
+  margin-bottom: 2rem;
+}
+
+.time__time {
+  display: block;
+  font-weight: 500;
+  font-size: 1.4rem;
+}
+
+.time__main {
   display: block;
 }
 
-.weather {
-  width: 100%;
-  height: 100%;
-  flex: 1;
-  display: flex;
-  background-color: blue;
+.time_description {
+
 }
 
-.weather .day {
-  width: 20%;
-  opacity: 0.5;
-  background-color: red;
+/* responsive */
+@media (min-width: 800px) {
+  .days {
+    flex-direction: row;
+  }
+  .days .day {
+    width: 20%;
+  }
 }
 
-.weather.day:hover {
-
+/* animation */
+@keyframes rollingDay {
+  0% {
+    background: LightSkyBlue;
+  }
+  50% {
+    background: MidnightBlue;
+  }
+  100% {
+    background: DeepSkyBlue;
+  }
 }

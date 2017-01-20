@@ -18,8 +18,9 @@ module.exports = {
   module: {
     loaders: [
       {
+        test: /\.js$/,
         loader: "babel-loader",
-        test: src,
+        include: src,
       },
     ],
   },
