@@ -1,6 +1,6 @@
 import "./stylesheets/index.scss"
 import { City } from "./components/city/city"
-import { Day } from "./components/day/day"
+import { Days } from "./components/days/days"
 import { fetchJSON } from "./helpers/fetchJSON"
 import React from "react"
 import ReactDOM from "react-dom"
@@ -52,16 +52,11 @@ class App extends React.Component {
       <main className={`weather ${loadingClass}`}>
         <If condition={this.state.city.name}>
           <City name={this.state.city.name} country={this.state.city.country} />
-          <div className="days">
-            {Object.keys(this.state.days).map((dateKey) =>
-              <Day key={dateKey}
-                date={new Date(dateKey)}
-                times={this.state.days[dateKey]}
-                timeSettings={Settings.defaultTimeSettings}
-                dateSettings={Settings.defaultDateSettings}
-              />
-            )}
-          </div>
+          <Days
+            days={this.state.days}
+            timeSettings={Settings.defaultTimeSettings}
+            dateSettings={Settings.defaultDateSettings}
+          />
         </If>
       </main>
     )
