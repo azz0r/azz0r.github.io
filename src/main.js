@@ -58,7 +58,7 @@ class App extends React.Component {
           <ul className="times">
             {times.map((time, key) =>
               <li className="time" key={key}>
-                <span className="time__time">{new Date(time.dt_txt).toLocaleTimeString()}</span>
+                <span className="time__time">{new Date(time.dt_txt).toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"})}</span>
                 <span className="time__main">{time.weather[0].main}</span>
                 <span className="time__description">{time.weather[0].description}</span>
               </li>

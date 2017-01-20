@@ -75,8 +75,8 @@ body,
   display: block;
 }
 
-.time_description {
-
+.time__description {
+  text-transform: capitalize;
 }
 
 /* responsive */
