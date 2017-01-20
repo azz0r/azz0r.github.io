@@ -1,12 +1,17 @@
-// react must be present
 import React from "react"
 const defaultTimeSettings = {
   hour: "2-digit",
   minute: "2-digit",
 }
+const defaultDateSettings = {
+  month: "short",
+  day: "numeric",
+  weekday: "short",
+}
 
 export const Day = ({
   times = [],
+  dateSettings = defaultDateSettings,
   timeSettings = defaultTimeSettings,
   date = new Date(),
 }) => {
@@ -15,11 +20,7 @@ export const Day = ({
   return (
     <div className={`day ${todayClass}`}>
       <h3 className="day__title">
-        {date.toLocaleDateString([], {
-          month: "short",
-          day: "numeric",
-          weekday: "short",
-        })}
+        {date.toLocaleDateString([], dateSettings)}
       </h3>
       <section className="times">
         {times.map((time, key) =>
@@ -28,16 +29,16 @@ export const Day = ({
               {time.dateTime.toLocaleTimeString([], timeSettings)}
             </span>
             <span className="time__main">
-              {time.main}
+              {time.main}&nbsp;
               <Choose>
                 <When condition={time.main === "Clouds"}>
-                  &nbsp;<span className="icon fa fa-cloud"></span>
+                  <span className="icon fa fa-cloud"></span>
                 </When>
                 <When condition={time.main === "Clear"}>
-                  &nbsp;<span className="icon clear fa fa-cloud"></span>
+                  <span className="icon clear fa fa-cloud"></span>
                 </When>
                 <When condition={time.main === "Rain"}>
-                  &nbsp;<span className="icon clear fa fa-umbrella"></span>
+                  <span className="icon clear fa fa-umbrella"></span>
                 </When>
                 <Otherwise>
                 </Otherwise>

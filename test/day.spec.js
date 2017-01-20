@@ -3,7 +3,7 @@ import {
   expect,
   mount,
 } from "./helper"
-import { Day } from "../src/components/day"
+import { Day } from "../src/components/day/day"
 import defaultProps from "./day.json"
 const currentDate = new Date()
 

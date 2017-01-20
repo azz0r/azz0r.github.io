@@ -1,6 +1,6 @@
 import "./stylesheets/index.scss"
-import { City } from "./components/city"
-import { Day } from "./components/day"
+import { City } from "./components/city/city"
+import { Day } from "./components/day/day"
 import { fetchJSON } from "./helpers/fetchJSON"
 import React from "react"
 import ReactDOM from "react-dom"

@@ -1,9 +1,9 @@
 import "jsdom-global/register"
-import React from "react"
-import chai from "chai"
-import sinon from "sinon"
 import { shallow, mount, render } from "enzyme"
+import chai from "chai"
 import chaiEnzyme from "chai-enzyme"
+import React from "react"
+import sinon from "sinon"
 
 const {
   assert,
