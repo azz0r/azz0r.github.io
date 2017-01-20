@@ -12,7 +12,7 @@ class App extends React.Component {
     q: "London, UK",
     mode: "json",
     city: "",
-    list: "",
+    list: [],
     loading: true,
   }
 
@@ -29,11 +29,13 @@ class App extends React.Component {
         prev[date].push(current)
         return prev
       }, [])
+
       this.setState({
         city: results.city,
         list: results.list,
         loading: false,
       })
+
     }).catch((error) => {
       console.log(error)
     })
@@ -47,30 +49,39 @@ class App extends React.Component {
         </h1>
       )
     }
+    const Day = ({ times = [],date = ""}) => {
+      console.log(times)
+      return (
+        <div className="day">
+          <h3>{date}</h3>
+          <ul>
+            {times.map((time, key) =>
+              <li key={key}>
+                {time.weather[0].main}
+                {time.weather[0].description}
+              </li>
+            )}
+          </ul>
+          {times.length}
+        </div>
+      )
+    }
+    const loadingClass = (this.state.loading) ? "loading" : "inactive"
     return (
-      <div className={`weather ${(this.state.loading) ? "loading" : "inactive"}`}>
+      <main className={`weather ${loadingClass}`}>
         <If condition={this.state.city.name}>
           <City name={this.state.city.name} country={this.state.city.country} />
-          {this.state.list.map((result, key) => {
-            console.log("hi")
-            return (
-              <div>
-                <h2>{key}</h2>
-                <p>{result.length}</p>
-              </div>
-            )})}
+          {Object.keys(this.state.list).map((dateKey) =>
+            <Day
+              key={dateKey}
+              date={new Date(dateKey).toLocaleString()}
+              times={this.state.list[dateKey]}
+            />
+          )}
         </If>
-      </div>
+      </main>
     )
   }
 }
 
 ReactDOM.render(<App />, document.getElementById("container"))
-
-/*
-{this.state.results.map((result, key) => {
-  return (
-    <div key={key}>{key}</div>
-  )
-})}
-*/
