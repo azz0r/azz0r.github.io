@@ -29,12 +29,19 @@ export const Day = ({
             </span>
             <span className="time__main">
               {time.main}
-              <If condition={time.main === "Clouds"}>
-                &nbsp;<span className="icon fa fa-cloud"></span>
-              </If>
-              <If condition={time.main === "Clear"}>
-                &nbsp;<span className="icon clear fa fa-cloud"></span>
-              </If>
+              <Choose>
+                <When condition={time.main === "Clouds"}>
+                  &nbsp;<span className="icon fa fa-cloud"></span>
+                </When>
+                <When condition={time.main === "Clear"}>
+                  &nbsp;<span className="icon clear fa fa-cloud"></span>
+                </When>
+                <When condition={time.main === "Rain"}>
+                  &nbsp;<span className="icon clear fa fa-umbrella"></span>
+                </When>
+                <Otherwise>
+                </Otherwise>
+              </Choose>
             </span>
             <span className="time__description">
               {time.description}

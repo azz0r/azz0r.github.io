@@ -14,4 +14,8 @@
   &__description {
     text-transform: capitalize;
   }
+
+  &:last-of-type hr {
+    display: none;
+  }
 }
