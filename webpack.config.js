@@ -4,6 +4,7 @@ var path = require("path")
 var src = path.resolve(__dirname, "src")
 var build = path.resolve(__dirname, "build")
 var webpack = require("webpack")
+var isProd = (process.env.NODE_ENV === 'production');
 
 module.exports = {
   entry: path.resolve(src, "main.js"),

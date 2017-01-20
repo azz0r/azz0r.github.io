@@ -15,7 +15,11 @@ export const Day = ({
   return (
     <div className={`day ${todayClass}`}>
       <h3 className="day__title">
-        {date.toLocaleDateString()}
+        {date.toLocaleDateString([], {
+          month: "short",
+          day: "numeric",
+          weekday: "short",
+        })}
       </h3>
       <section className="times">
         {times.map((time, key) =>
@@ -27,6 +31,9 @@ export const Day = ({
               {time.main}
               <If condition={time.main === "Clouds"}>
                 &nbsp;<span className="icon fa fa-cloud"></span>
+              </If>
+              <If condition={time.main === "Clear"}>
+                &nbsp;<span className="icon clear fa fa-cloud"></span>
               </If>
             </span>
             <span className="time__description">

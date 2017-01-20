@@ -1,0 +1,26 @@
+.weather {
+  &.loading {
+
+  }
+}
+
+@keyframes loading {
+  0% {
+    background-color: red;
+  }
+  20% {
+    background-color: yellow;
+  }
+  30% {
+    background-color: pink;
+  }
+  50% {
+    background-color: green;
+  }
+  100% {
+    background-color: orange;
+  }
+  50% {
+    background-color: purple
+  }
+}

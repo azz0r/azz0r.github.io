@@ -1,6 +1,7 @@
 @import "animation";
 @import "days";
 @import "time";
+@import "weather";
 
 body {
   animation: rollingDay 20s ease-out infinite;
@@ -42,4 +43,13 @@ body,
   border: 0;
   height: 1px;
   margin-top: 1rem;
+}
+
+.fa-cloud {
+  color: #9cadda;
+}
+
+.fa-cloud.clear {
+  text-shadow: 0px 0px 2px black;
+  color: white;
 }

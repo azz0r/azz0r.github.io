@@ -4,37 +4,40 @@ import { Day } from "./components/day"
 import { fetchJSON } from "./helpers/fetchJSON"
 import React from "react"
 import ReactDOM from "react-dom"
-import settings from "./settings"
+import Settings from "./settings"
 
 class App extends React.Component {
 
   state = {
-    q: settings.defaultLocation,
+    q: Settings.defaultLocation,
     mode: "json",
     city: "",
-    list: [],
+    days: [],
     loading: true,
   }
 
   fetchJSON = () => {
-    const url = `${settings.apiUrl}?appId=${settings.appId}&q=${this.state.q}&mode=${this.state.mode}`
+    const url = `${Settings.apiUrl}?appId=${Settings.appId}&q=${this.state.q}&mode=${this.state.mode}`
     return fetchJSON(url)
       .then((results) => {
-        results.list = results.list.reduce((prev, current) => {
-          let date = current.dt_txt.split(" ")[0]
-          if (!prev[date]) prev[date] = []
-          prev[date].push({
-            main: current.weather[0].description,
-            description: current.weather[0].description,
-            dateTime: new Date(current.dt_txt),
-          })
-          return prev
-        }, [])
+        let
+          loading = false,
+          city = results.city,
+          days = results.list.reduce((prev, current) => {
+            let date = current.dt_txt.split(" ")[0]
+            if (!prev[date]) prev[date] = []
+            prev[date].push({
+              main: current.weather[0].main,
+              description: current.weather[0].description,
+              dateTime: new Date(current.dt_txt),
+            })
+            return prev
+          }, [])
 
         this.setState({
-          city: results.city,
-          list: results.list,
-          loading: false,
+          loading,
+          city,
+          days,
         })
       })
   }
@@ -44,17 +47,16 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.state)
     const loadingClass = (this.state.loading) ? "loading" : "inactive"
     return (
       <main className={`weather ${loadingClass}`}>
         <If condition={this.state.city.name}>
           <City name={this.state.city.name} country={this.state.city.country} />
           <div className="days">
-            {Object.keys(this.state.list).map((dateKey) =>
+            {Object.keys(this.state.days).map((dateKey) =>
               <Day key={dateKey}
                 date={new Date(dateKey)}
-                times={this.state.list[dateKey]}
+                times={this.state.days[dateKey]}
               />
             )}
           </div>
