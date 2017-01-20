@@ -1,13 +1,18 @@
 body {
   font-family: "Roboto Slab", "Verdana", sans-serif;
-  animation: rollingDay 50s ease-out infinite;
+  animation: rollingDay 20s ease-out infinite;
   height: 100%;
   margin: 0;
   border: 0;
 }
 
 h1 {
-  padding: 2rem 0 0rem 2rem;
+  padding: 0 0 0 2rem;
+  color: white;
+  text-shadow: 1px 1px black;
+  text-align: left;
+  margin: 2rem 0rem;
+  font-size: 3rem;
 }
 
 ul {
@@ -77,6 +82,12 @@ body,
 
 .time__description {
   text-transform: capitalize;
+}
+
+.separator {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, #f0f0f0, #ccc, #f0f0f0);
 }
 
 /* responsive */
