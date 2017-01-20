@@ -1,7 +1,7 @@
 import "./stylesheets/index.scss"
 import { City } from "./components/city"
 import { Day } from "./components/day"
-import { fetchJSON } from "./fetchJSON"
+import { fetchJSON } from "./helpers/fetchJSON"
 import React from "react"
 import ReactDOM from "react-dom"
 import settings from "./settings"
