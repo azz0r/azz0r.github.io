@@ -14,7 +14,7 @@ export const Day = ({
   const todayClass = isToday ? "active" : "inactive"
   return (
     <div className={`day ${todayClass}`}>
-      <h3>
+      <h3 className="day__title">
         {date.toLocaleDateString()}
       </h3>
       <section className="times">
