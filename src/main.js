@@ -4,11 +4,7 @@ import { City } from "./components/city"
 import { Day } from "./components/day"
 import React from "react"
 import ReactDOM from "react-dom"
-
-const settings = {
-  appId: "c7074b48826a3e1f5def36267b52c7bb",
-  apiUrl: "http://api.openweathermap.org/data/2.5/forecast",
-}
+import settings from "./settings"
 
 class App extends React.Component {
 

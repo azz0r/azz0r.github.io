@@ -23,6 +23,11 @@ module.exports = {
         include: src,
       },
       {
+        test: /\.json$/,
+        include: src,
+        loader: "json",
+      },
+      {
         test: /\.scss$/,
         loaders: [
           "style-loader",
