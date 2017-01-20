@@ -19,7 +19,7 @@ class App extends React.Component {
     loading: true,
   }
 
-  componentDidMount() {
+  fetchJSON = () => {
     const url = `${settings.apiUrl}?appId=${settings.appId}&q=${this.state.q}&mode=${this.state.mode}`
     fetch(url, {
       method: "GET",
@@ -42,6 +42,10 @@ class App extends React.Component {
     }).catch((error) => {
       console.log(error)
     })
+  }
+
+  componentDidMount() {
+    this.fetchJSON()
   }
 
   render() {
