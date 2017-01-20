@@ -1,0 +1,25 @@
+@keyframes rollingDay {
+  0% {
+    background: LightSkyBlue;
+  }
+
+  40% {
+    background: #b0b0ff;
+  }
+
+  50% {
+    background-color: MidnightBlue;
+  }
+
+  60% {
+    background: black;
+  }
+
+  75% {
+    background: #c0f6ff;
+  }
+
+  100% {
+    background: LightSkyBlue;
+  }
+}

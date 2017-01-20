@@ -1,18 +1,22 @@
+@import "animation";
+@import "days";
+@import "time";
+
 body {
-  font-family: "Roboto Slab", "Verdana", sans-serif;
   animation: rollingDay 20s ease-out infinite;
+  border: 0;
+  font-family: "Roboto Slab", "Verdana", sans-serif;
   height: 100%;
   margin: 0;
-  border: 0;
 }
 
 h1 {
-  padding: 0 0 0 2rem;
   color: white;
-  text-shadow: 1px 1px black;
-  text-align: left;
-  margin: 2rem 0rem;
   font-size: 3rem;
+  margin: 2rem 0rem;
+  padding: 0 0 0 2rem;
+  text-align: left;
+  text-shadow: 1px 1px black;
 }
 
 ul {
@@ -23,8 +27,8 @@ ul li {
   list-style: none;
 }
 
-/* react requires a parent div so we have to set that
-   and the main element to 100% for flex justify content to work */
+// react requires a parent div so we have to set that
+// and the main element to 100% for flex justify content to work
 html,
 body,
 #container,
@@ -33,91 +37,8 @@ body,
   height: 100%;
 }
 
-.days {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  justify-content: center;
-  align-items: baseline;
-  padding: 0 1rem;
-}
-
-.days .day {
-  background-color: #fff;
-  margin: 0 1rem;
-  opacity: .7;
-  text-align: center;
-  transition: opacity 1s ease-in;
-  width: 100%;
-}
-
-.day h3 {
-  font-size: 2.2rem;
-}
-
-.days .day:hover {
-  opacity: 1;
-  transition: opacity 1s ease-out;
-}
-
-.day {
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-  position: relative;
-}
-
-.time {
-  margin-bottom: 2rem;
-}
-
-.time__time {
-  display: block;
-  font-weight: 500;
-  font-size: 1.4rem;
-}
-
-.time__main {
-  display: block;
-}
-
-.time__description {
-  text-transform: capitalize;
-}
-
 .separator {
+  background-image: linear-gradient(to right, #f0f0f0, #ccc, #f0f0f0);
   border: 0;
   height: 1px;
-  background-image: linear-gradient(to right, #f0f0f0, #ccc, #f0f0f0);
-}
-
-/* responsive */
-@media (min-width: 800px) {
-  .days {
-    flex-direction: row;
-  }
-  .days .day {
-    width: 20%;
-  }
-}
-
-/* animation */
-@keyframes rollingDay {
-  0% {
-    background: LightSkyBlue;
-  }
-  40% {
-    background: #b0b0ff;
-  }
-  50% {
-    background-color: MidnightBlue;
-  }
-  60% {
-    background: black;
-  }
-  75% {
-    background: #c0f6ff;
-  }
-  100% {
-    background: LightSkyBlue;
-  }
 }
