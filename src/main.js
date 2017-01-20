@@ -1,5 +1,8 @@
 import React from "react"
 import ReactDOM from "react-dom"
+import { Day } from "./components/day"
+import { City } from "./components/city"
+
 import "whatwg-fetch"
 const settings = {
   appId: "c7074b48826a3e1f5def36267b52c7bb",
@@ -42,34 +45,6 @@ class App extends React.Component {
   }
 
   render() {
-    const City = ({ name, country }) => {
-      return (
-        <h1>
-          {name}, {country}
-        </h1>
-      )
-    }
-    const Day = ({ times = [], date = new Date()}) => {
-      const isToday = new Date().toLocaleDateString() === date.toLocaleDateString()
-      const todayClass = isToday ? "active" : "inactive"
-      return (
-        <div className={`day ${todayClass}`}>
-          <h3>{date.toLocaleDateString()}</h3>
-          <ul className="times">
-            {times.map((time, key) =>
-              <li className="time ss-style-triangles" key={key}>
-                <span className="time__time">{new Date(time.dt_txt).toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"})}</span>
-                <span className="time__main">{time.weather[0].main}</span>
-                <span className="time__description">{time.weather[0].description}</span>
-                <div>
-                  <hr className="separator" />
-                </div>
-              </li>
-            )}
-          </ul>
-        </div>
-      )
-    }
     const loadingClass = (this.state.loading) ? "loading" : "inactive"
     return (
       <main className={`weather ${loadingClass}`}>
