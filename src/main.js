@@ -23,7 +23,11 @@ class App extends React.Component {
         results.list = results.list.reduce((prev, current) => {
           let date = current.dt_txt.split(" ")[0]
           if (!prev[date]) prev[date] = []
-          prev[date].push(current)
+          prev[date].push({
+            main: current.weather[0].description,
+            description: current.weather[0].description,
+            dateTime: new Date(current.dt_txt),
+          })
           return prev
         }, [])
 
@@ -40,6 +44,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(this.state)
     const loadingClass = (this.state.loading) ? "loading" : "inactive"
     return (
       <main className={`weather ${loadingClass}`}>

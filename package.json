@@ -21,20 +21,23 @@
     "webpack-dev-server": "^1.12.1"
   },
   "scripts": {
-    "start": "webpack-dev-server --hot --inline",
-    "watch": "webpack --watch",
-    "build": "webpack",
-    "test": "NODE_ENV=test mocha --recursive -r --compilers js:babel-core/register,js:./test/helpers/css-modules-compiler.js test/*.spec.js"
+    "start": "NODE_ENV=development webpack-dev-server --hot --inline",
+    "watch": "NODE_ENV=development webpack --watch",
+    "build": "NODE_ENV=production webpack",
+    "test": "NODE_ENV=test mocha --compilers js:babel-core/register -r test/*.spec.js"
   },
   "dependencies": {
     "chai": "^3.5.0",
     "chai-enzyme": "^0.6.1",
     "enzyme": "^2.7.0",
     "eslint": "^3.13.1",
+    "jsdom": "^9.9.1",
     "jsdom-global": "^2.1.1",
     "json-loader": "^0.5.4",
     "jsx-control-statements": "^3.1.5",
+    "mocha": "^3.2.0",
     "react": "^15.4.2",
+    "react-addons-test-utils": "^15.4.2",
     "react-dom": "^15.4.2",
     "sinon": "^1.17.7",
     "whatwg-fetch": "^2.0.2"

@@ -21,16 +21,16 @@ export const Day = ({
         {times.map((time, key) =>
           <div className="time" key={key}>
             <span className="time__time">
-              {new Date(time.dt_txt).toLocaleTimeString([], timeSettings)}
+              {time.dateTime.toLocaleTimeString([], timeSettings)}
             </span>
             <span className="time__main">
-              {time.weather[0].main}
-              <If condition={time.weather[0].main === "Clouds"}>
+              {time.main}
+              <If condition={time.main === "Clouds"}>
                 &nbsp;<span className="icon fa fa-cloud"></span>
               </If>
             </span>
             <span className="time__description">
-              {time.weather[0].description}
+              {time.description}
             </span>
             <div>
               <hr className="separator" />

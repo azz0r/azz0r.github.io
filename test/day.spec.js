@@ -1,24 +1,29 @@
 import {
   React,
   expect,
-} from "../test"
+  mount,
+} from "./helper"
 import { Day } from "../src/components/day"
-import props from "./stub"
+import defaultProps from "./day.json"
+const currentDate = new Date()
 
 describe("Day Component", () => {
-    const wrapper = mount(<Day {...props} />);
-    it('contains an <Day /> component', () => {
-      expect(wrapper.find(Day)).to.have.length(1);
-    });
-    it('has the right title', () => {
-      expect(wrapper.find('h1').text()).to.equal(props.title);
-    });
-    it('has the right sub title', () => {
-      expect(wrapper.find('.sub-title').text()).to.equal(props.subTitle);
-    });
-    it('allows us to set props', () => {
-      wrapper.setProps({ title: 'foo' });
-      expect(wrapper.props().title).to.equal('foo');
-    });
-  });
+  const props = defaultProps
+  const wrapper = mount(<Day {...props} />)
+  it('contains an <Day /> component', () => {
+    expect(wrapper.find(Day)).to.have.length(1)
+  })
+  it('sets today as active', () => {
+    wrapper.setProps({ date: currentDate })
+    expect(
+      wrapper.find('.day__title').text()
+    ).to.equal(currentDate.toLocaleDateString())
+  })
+  it('time settings change the output', () => {
+    expect(wrapper.find('.sub-title').text()).to.equal(props.subTitle)
+  })
+  it('Day title is correct', () => {
+    wrapper.setProps({ title: 'foo' })
+    expect(wrapper.props().title).to.equal('foo')
+  })
 })
