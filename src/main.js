@@ -19,12 +19,24 @@ class App extends React.Component {
   fetchJSON = () => {
     const url = `${settings.apiUrl}?appId=${settings.appId}&q=${this.state.q}&mode=${this.state.mode}`
     return fetchJSON(url)
+      .then((results) => {
+        results.list = results.list.reduce((prev, current) => {
+          let date = current.dt_txt.split(" ")[0]
+          if (!prev[date]) prev[date] = []
+          prev[date].push(current)
+          return prev
+        }, [])
+
+        this.setState({
+          city: results.city,
+          list: results.list,
+          loading: false,
+        })
+      })
   }
 
   componentDidMount() {
-    this.fetchJSON().then(data => this.setState({
-      ...data,
-    }))
+    this.fetchJSON()
   }
 
   render() {
