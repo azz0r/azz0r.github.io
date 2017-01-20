@@ -1,7 +1,7 @@
 import "./stylesheets/index.scss"
-import "whatwg-fetch"
 import { City } from "./components/city"
 import { Day } from "./components/day"
+import { fetchJSON } from "./fetchJSON"
 import React from "react"
 import ReactDOM from "react-dom"
 import settings from "./settings"
@@ -18,31 +18,13 @@ class App extends React.Component {
 
   fetchJSON = () => {
     const url = `${settings.apiUrl}?appId=${settings.appId}&q=${this.state.q}&mode=${this.state.mode}`
-    fetch(url, {
-      method: "GET",
-    })
-    .then(response => response.json())
-    .then((results) => {
-      results.list = results.list.reduce((prev, current) => {
-        let date = current.dt_txt.split(" ")[0]
-        if (!prev[date]) prev[date] = []
-        prev[date].push(current)
-        return prev
-      }, [])
-
-      this.setState({
-        city: results.city,
-        list: results.list,
-        loading: false,
-      })
-
-    }).catch((error) => {
-      console.log(error)
-    })
+    return fetchJSON(url)
   }
 
   componentDidMount() {
-    this.fetchJSON()
+    this.fetchJSON().then(data => this.setState({
+      ...data,
+    }))
   }
 
   render() {
