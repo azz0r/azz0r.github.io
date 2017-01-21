@@ -21,9 +21,8 @@
     "webpack-dev-server": "^1.12.1"
   },
   "scripts": {
-    "start": "NODE_ENV=development webpack-dev-server --hot --inline",
-    "watch": "NODE_ENV=development webpack --watch",
-    "build": "NODE_ENV=production webpack",
+    "start": "NODE_ENV=development DEBUG=app:* babel-node ./scripts/start.js",
+    "build": "NODE_ENV=production DEBUG=app:* babel-node ./scripts/build.js",
     "test": "NODE_ENV=test mocha --compilers js:babel-core/register -r test/*.spec.js"
   },
   "dependencies": {
@@ -31,11 +30,18 @@
     "chai-enzyme": "^0.6.1",
     "enzyme": "^2.7.0",
     "eslint": "^3.13.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "filesize": "^3.4.1",
+    "gzip-size": "^3.0.0",
     "jsdom": "^9.9.1",
     "jsdom-global": "^2.1.1",
     "json-loader": "^0.5.4",
     "jsx-control-statements": "^3.1.5",
     "mocha": "^3.2.0",
+    "opn": "^4.0.2",
+    "play-sound": "^1.1.1",
+    "postcss": "^5.2.11",
+    "postcss-loader": "^1.2.2",
     "react": "^15.4.2",
     "react-addons-test-utils": "^15.4.2",
     "react-dom": "^15.4.2",
